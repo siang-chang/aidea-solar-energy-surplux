@@ -1,6 +1,12 @@
 # surplux
  [AIdea 太陽能發電量預測競賽, ITRI, Surplux Energy](https://aidea-web.tw/topic/09679060-518a-4e6f-94db-53c7d8de8138)
  
+## Todo
+- [ ] Pre-process: remove outlier
+- [ ] Pre-process: fill missing value
+- [ ] ML Model: linear regression, SVM, XGBoost
+- [ ] DL Model: LSTM, GRU
+
 ## 簡介
 淨零排放 (Net Zero Emissions) 已成為國際共識與全球目標，目前已累積逾136國參與，甚至部分國家已達初期設定標。近來台灣擬定4大策略，預計2050年實現淨零碳排，而提升太陽光電、風力發電等再生能源發電比例也是能源轉型的重要方向。
 
