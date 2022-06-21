@@ -3,11 +3,12 @@
  
 ## Todo
 
-- [ ] Data: train model by normalized power
-- [ ] Date: train model base on location group (若只依機組型號分類，特定群組會缺少冬季的訓練資料，對測試資料反應不佳)
+- [X] Data: train model by normalized power
+- [X] Date: train model base on location group (若只依機組型號分類，特定群組會缺少冬季的訓練資料，對測試資料反應不佳)
+- [ ] Date: train model base on location group, Add: C
 - [ ] Ensemble: ML (50%) & Rule Base (50%)
 - [ ] Data: train by full train data
-- [ ] DL Model: LSTM, GRU
+- [ ] ~~DL Model: LSTM, GRU~~
 - [X] ML Model: linear regression, SVM, XGBoost
 - [X] Pre-process: remove outlier
 - [ ] ~~Pre-process: fill missing value~~
