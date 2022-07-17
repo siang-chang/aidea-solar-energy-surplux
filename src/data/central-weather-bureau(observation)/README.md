@@ -11,8 +11,8 @@ Source from: https://e-service.cwb.gov.tw/HistoryDataQuery/downloads/Readme.pdf
 | ObsTime      | 資料時間              |
 | StnPres      | 測站氣壓(hPa)         |
 | SeaPres      | 海平面氣壓(hPa)        |
-| Temperature  | 氣溫(℃)             |
-| Td dew point | 露點溫度(℃)           |
+| Temperature  | 氣溫(°C)             |
+| Td dew point | 露點溫度(°C)           |
 | RH           | 相對溼度(%)           |
 | WS           | 風速(m/s)           |
 | WD           | 風向(360degree)     |
@@ -21,7 +21,7 @@ Source from: https://e-service.cwb.gov.tw/HistoryDataQuery/downloads/Readme.pdf
 | Precp        | 降水量(mm)           |
 | PrecpHour    | 降水時數(hr)          |
 | SunShine     | 日照時數(hr)          |
-| GloblRad     | 全天空日射量(MJ/㎡)      |
+| GloblRad     | 全天空日射量(MJ/m²)      |
 | Visb         | 能見度(km)           |
 | UVI          | 紫外線指數             |
 | Cloud Amount | 總雲量               |
