@@ -1,4 +1,4 @@
-# surplux
+# AIdea: Solar PV Forecast - Surplux
 
 [AIdea 太陽能發電量預測競賽, ITRI, Surplux Energy](https://aidea-web.tw/topic/09679060-518a-4e6f-94db-53c7d8de8138)
 
