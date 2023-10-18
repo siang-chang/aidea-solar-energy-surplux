@@ -52,26 +52,25 @@
 
 ### Submission History
 
-| 檔名                                                                      | 方法                                                                                                           | 上傳時間            | 評估結果  | 排名  |
-| :------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------- | :------------------ | :-------- | :---- |
-| rule_based_group_by_lat_lon_module_capacity                               | 將歷史資料基於經緯度、模組及裝置容量分組，計算歷史 AR[^1] 用於推算未來發電量                                   | 2022-06-12 00:03:24 | 278.91238 |       |
-| rule_based_group_by_lat_lon_module_capacity_remove_outlier_by_rad_power   | 基於經緯度、模組及裝置容量分組，剔除輻射及發電量的離群值後再計算歷史 AR 推算發電量                             | 2022-06-15 21:31:39 | 283.51476 |       |
-| rule_based_group_by_lat_lon                                               | 將歷史資料基於經緯度分組，計算歷史 AR 用於推算未來發電量                                                       | 2022-06-13 23:37:04 | 277.33373 |       |
-| rule_based_group_by_lat_lon_remove_outlier_by_rad                         | 基於經緯度分組，剔除輻射量的離群值後再計算歷史 AR 推算發電量                                                   | 2022-06-16 22:02:26 | 278.37551 |       |
-| rule_based_group_by_lat_lon_remove_outlier_by_rad_power                   | 基於經緯度分組，剔除輻射及發電量的離群值後再計算歷史 AR 推算發電量                                             | 2022-06-15 21:24:07 | 279.49857 |       |
-| xgb_group_by_lat_lon_module_capacity_1d_doyt                              | 基於經緯度、模組及裝置容量分組，再以預測日的觀測輻射[^2] 及晴空輻射[^3] 為輸入變數[^4] 訓練 XGboost 預估發電量 | 2022-06-19 21:38:59 | 271.40773 |       |
-| xgb_group_by_lat_lon_module_capacity_1d_prev3d_doyt                       | 基於經緯度、模組及裝置容量分組，再以預測日及過去 3 日的輻射[^5] 為輸入變數訓練 XGboost 預估發電量              | 2022-06-19 23:22:40 | 302.62303 |       |
-| xgb_group_by_lat_lon_module_capacity_1d_remove_outlier                    | 基於經緯度、模組及裝置容量分組，剔除輻射及發電量的離群值後，再以前述資料[^4] 為輸入變數訓練 XGboost 預估發電量 | 2022-06-19 23:33:54 | 269.38945 |       |
-| xgb_group_by_lat_lon_module_capacity_1d_remove_outlier_replace            | 承接前個實驗，僅以 rule-based 方法替換 AUO PM060MW3 325W[^6] 的估計值                                          | 2022-06-19 23:56:02 | 258.79723 |       |
-| xgb_group_by_lat_lon_module_capacity_1d_normalized_remove_outlier_replace | 承接前個實驗，在訓練模型的時候先將發電量除以裝置容量正規化，產出估計值以後再乘以裝置容量                       | 2022-06-20 23:03:25 | 258.46331 |       |
-| xgb_group_by_lat_1d_normalized_remove_outlier                             | 基於緯度分組，再以前述資料[^4] 為輸入變數訓練 XGboost 預估發電量                                               | 2022-06-20 23:19:42 | 277.34923 |       |
-| xgb_group_by_lat_1d_normalized_remove_outlier_replace                     | 承接前個實驗，僅以 rule-based 方法替換 AUO PM060MW3 325W 的估計值                                              | 2022-06-20 23:20:33 | 276.31831 |       |
-| xgb_group_by_lon_1d_normalized_remove_outlier_replace                     | 承接前個實驗，僅改為基於經度分組                                                                               | 2022-06-20 23:27:59 | 269.63295 |       |
-| xgb_group_by_lon_1d_prev1d_capacity_normalized_remove_outlier             | 基於經度分組訓練模型，並在輸入變數加入裝置容量[^7] 及過去 1 日的輻射[^8]                                       | 2022-06-21 22:53:40 | 238.85634 |       |
-| xgb_group_by_lon_1d_prev1d_capacity_normalized_remove_outlier_hpo_v1      | 承接前個實驗，進行大量模型超參數調整                                                                           | 2022-06-21 23:40:28 | 241.13532 |       |
-| xgb_group_by_lon_1d_prev1d_capacity_normalized_remove_outlier_hpo_v2      | 承接前個實驗，進行小量模型超參數調整                                                                           | 2022-06-21 23:49:47 | 242.54411 |       |
-| xgb_group_by_lat_and_group_by_lon_ensemble_1d_prev1d_capacity             | 集合基於經度與緯度分組訓練的預測結果                                                                           | 2022-06-21 23:54:09 | 240.98290 |       |
-| xgb_group_by_lon_1d_prev1d_capacity_normalized_remove_outlier             | 使用歷史最佳答案作為最終答案                                                                                   | 2022-06-21 23:55:00 | 238.85634 | 9/179 |
+| 檔名                                                               | 方法                                                                                                           | 上傳時間            | 評估結果  | 排名  |
+| :----------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- | :------------------ | :-------- | :---- |
+| rule_based_groupby_lat_lon_module_capacity                        | 將歷史資料基於經緯度、模組及裝置容量分組，計算歷史 AR[^1] 用於推算未來發電量                                   | 2022-06-12 00:03:24 | 278.91238 |       |
+| rule_based_groupby_lat_lon_module_capacity_outlier                | 基於經緯度、模組及裝置容量分組，剔除輻射及發電量的離群值後再計算歷史 AR 推算發電量                             | 2022-06-15 21:31:39 | 283.51476 |       |
+| rule_based_groupby_lat_lon                                        | 將歷史資料基於經緯度分組，計算歷史 AR 用於推算未來發電量                                                       | 2022-06-13 23:37:04 | 277.33373 |       |
+| rule_based_groupby_lat_lon_outlier                                | 基於經緯度分組，剔除輻射及發電量的離群值後再計算歷史 AR 推算發電量                                             | 2022-06-15 21:24:07 | 279.49857 |       |
+| xgb_groupby_lat_lon_module_capacity_1d_doyt                       | 基於經緯度、模組及裝置容量分組，再以預測日的觀測輻射[^2] 及晴空輻射[^3] 為輸入變數[^4] 訓練 XGboost 預估發電量 | 2022-06-19 21:38:59 | 271.40773 |       |
+| xgb_groupby_lat_lon_module_capacity_1d_prev3d_doyt                | 基於經緯度、模組及裝置容量分組，再以預測日及過去 3 日的輻射[^5] 為輸入變數訓練 XGboost 預估發電量              | 2022-06-19 23:22:40 | 302.62303 |       |
+| xgb_groupby_lat_lon_module_capacity_1d_outlier                    | 基於經緯度、模組及裝置容量分組，剔除輻射及發電量的離群值後，再以前述資料[^4] 為輸入變數訓練 XGboost 預估發電量 | 2022-06-19 23:33:54 | 269.38945 |       |
+| xgb_groupby_lat_lon_module_capacity_1d_outlier_replace            | 承接前個實驗，僅以 rule-based 方法替換 AUO PM060MW3 325W[^6] 的估計值                                          | 2022-06-19 23:56:02 | 258.79723 |       |
+| xgb_groupby_lat_lon_module_capacity_1d_normalized_outlier_replace | 承接前個實驗，在訓練模型的時候先將發電量除以裝置容量正規化，產出估計值以後再乘以裝置容量                       | 2022-06-20 23:03:25 | 258.46331 |       |
+| xgb_groupby_lat_1d_normalized_outlier                             | 基於緯度分組，再以前述資料[^4] 為輸入變數訓練 XGboost 預估發電量                                               | 2022-06-20 23:19:42 | 277.34923 |       |
+| xgb_groupby_lat_1d_normalized_outlier_replace                     | 承接前個實驗，僅以 rule-based 方法替換 AUO PM060MW3 325W 的估計值                                              | 2022-06-20 23:20:33 | 276.31831 |       |
+| xgb_groupby_lon_1d_normalized_outlier_replace                     | 承接前個實驗，僅改為基於經度分組                                                                               | 2022-06-20 23:27:59 | 269.63295 |       |
+| xgb_groupby_lon_1d_prev1d_capacity_normalized_outlier             | 基於經度分組訓練模型，並在輸入變數加入裝置容量[^7] 及過去 1 日的輻射[^8]                                       | 2022-06-21 22:53:40 | 238.85634 |       |
+| xgb_groupby_lon_1d_prev1d_capacity_normalized_outlier_hpo_v1      | 承接前個實驗，進行大量模型超參數調整                                                                           | 2022-06-21 23:40:28 | 241.13532 |       |
+| xgb_groupby_lon_1d_prev1d_capacity_normalized_outlier_hpo_v2      | 承接前個實驗，進行小量模型超參數調整                                                                           | 2022-06-21 23:49:47 | 242.54411 |       |
+| xgb_groupby_lat_and_groupby_lon_ensemble_1d_prev1d_capacity      | 集合基於經度與緯度分組訓練的預測結果                                                                           | 2022-06-21 23:54:09 | 240.98290 |       |
+| xgb_groupby_lon_1d_prev1d_capacity_normalized_outlier             | 使用歷史最佳答案作為最終答案                                                                                   | 2022-06-21 23:55:00 | 238.85634 | 9/179 |
 
 [^1]: Array to Inverter Ratio
 [^2]: 外部資料來源：中央氣象局觀測資料查詢系統

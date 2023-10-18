@@ -94,8 +94,8 @@
 
 | 實驗                                       | 方法                                                       | RMSE      |
 | :----------------------------------------- | :--------------------------------------------------------- | :-------- |
-| rule-based-groupby-lat-lon                 | 將歷史資料基於經緯分組，計算轉換率用於推算發電量           | 277.33373 |
-| rule-based-groupby-lat-lon-module-capacity | 將歷史資料基於經緯及模組容量分組，計算轉換率用於推算發電量 | 278.91238 |
+| rule_based_groupby_lat_lon                 | 將歷史資料基於經緯分組，計算轉換率用於推算發電量           | 277.33373 |
+| rule_based_groupby_lat_lon_module_capacity | 將歷史資料基於經緯及模組容量分組，計算轉換率用於推算發電量 | 278.91238 |
 
 為了準確計算每個發電廠的陣列轉換率，將資料先依據經度、緯度、機組型號及裝置容量替原始資料分組，然後再使用歷史發電量、觀測輻射及裝置容量計算每個群組的陣列轉換率。
 
@@ -113,11 +113,11 @@
 
 | 實驗                                                                      | 方法                                                                                                           | RMSE      |
 | :------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------- | :-------- |
-| xgb_group_by_lat_lon_module_capacity_1d_doyt                              | 基於經緯度、模組及裝置容量分組，再以預測日的觀測輻射及晴空輻射為輸入變數訓練 XGboost 預估發電量                | 271.40773 |
-| xgb_group_by_lat_lon_module_capacity_1d_prev3d_doyt                       | 基於經緯度、模組及裝置容量分組，再以預測日及過去 3 日的輻射為輸入變數訓練 XGboost 預估發電量                   | 302.62303 |
-| xgb_group_by_lat_lon_module_capacity_1d_remove_outlier                    | 基於經緯度、模組及裝置容量分組，剔除輻射及發電量的離群值後，再以前述資料[^4] 為輸入變數訓練 XGboost 預估發電量 | 269.38945 |
-| xgb_group_by_lat_lon_module_capacity_1d_remove_outlier_replace            | 承接前個實驗，僅以 rule-based 方法替換 AUO PM060MW3 325W[^6] 的估計值                                          | 258.79723  |
-| xgb_group_by_lat_lon_module_capacity_1d_normalized_remove_outlier_replace | 承接前個實驗，在訓練模型的時候先將發電量除以裝置容量正規化，產出估計值以後再乘以裝置容量                       | 258.46331 |
+| xgb_groupby_lat_lon_module_capacity_1d_doyt                              | 基於經緯度、模組及裝置容量分組，再以預測日的觀測輻射及晴空輻射為輸入變數訓練 XGboost 預估發電量                | 271.40773 |
+| xgb_groupby_lat_lon_module_capacity_1d_prev3d_doyt                       | 基於經緯度、模組及裝置容量分組，再以預測日及過去 3 日的輻射為輸入變數訓練 XGboost 預估發電量                   | 302.62303 |
+| xgb_groupby_lat_lon_module_capacity_1d_outlier                    | 基於經緯度、模組及裝置容量分組，剔除輻射及發電量的離群值後，再以前述資料[^4] 為輸入變數訓練 XGboost 預估發電量 | 269.38945 |
+| xgb_groupby_lat_lon_module_capacity_1d_outlier_replace            | 承接前個實驗，僅以 rule-based 方法替換 AUO PM060MW3 325W[^6] 的估計值                                          | 258.79723  |
+| xgb_groupby_lat_lon_module_capacity_1d_normalized_outlier_replace | 承接前個實驗，在訓練模型的時候先將發電量除以裝置容量正規化，產出估計值以後再乘以裝置容量                       | 258.46331 |
 
 ### Group by Longitude
 
@@ -135,9 +135,9 @@
 
 | 實驗                                                                 | 方法                                                                          | RMSE      |
 | :------------------------------------------------------------------- | :---------------------------------------------------------------------------- | :-------- |
-| xgb_group_by_lat_1d_normalized_remove_outlier_replace                | 將 14 個發電廠依據緯度分組，再以預測日的輻射為輸入變數訓練 XGboost 預估發電量 | 276.31831 |
-| xgb_group_by_lon_1d_normalized_remove_outlier_replace                | 將 14 個發電廠依據經度分組，再以預測日的輻射為輸入變數訓練 XGboost 預估發電量 | 269.63295 |
-| xgb_group_by_lon_1d_prev1d_capacity_normalized_remove_outlier        | 延續基於經度分組的架構，並在輸入變數追加裝置容量及過去 1 日的輻射      | 238.85634 |
+| xgb_groupby_lat_1d_normalized_outlier_replace                | 將 14 個發電廠依據緯度分組，再以預測日的輻射為輸入變數訓練 XGboost 預估發電量 | 276.31831 |
+| xgb_groupby_lon_1d_normalized_outlier_replace                | 將 14 個發電廠依據經度分組，再以預測日的輻射為輸入變數訓練 XGboost 預估發電量 | 269.63295 |
+| xgb_groupby_lon_1d_prev1d_capacity_normalized_outlier        | 延續基於經度分組的架構，並在輸入變數追加裝置容量及過去 1 日的輻射      | 238.85634 |
 
 **依據經度、緯度、機組型號及裝置容量分組的各組資料量**
 | Module | Capacity | Lat | Lon | Count |
@@ -177,9 +177,9 @@
 
 | 實驗                                                                 | 方法                                                                          | RMSE      |
 | :------------------------------------------------------------------- | :---------------------------------------------------------------------------- | :-------- |
-| xgb_group_by_lon_1d_prev1d_capacity_normalized_remove_outlier        | 延續基於經度分組的架構，並在輸入變數追加裝置容量及過去 1 日的輻射      | 238.85634 |
-| xgb_group_by_lon_1d_prev1d_capacity_normalized_remove_outlier_hpo_v1 | 延續前個實驗，進行模型的超參數調整                                          | 241.13532 |
-| xgb_group_by_lon_1d_prev1d_capacity_normalized_remove_outlier_hpo_v2 | 延續前個實驗，進行模型的超參數調整                                          | 242.54411 |
+| xgb_groupby_lon_1d_prev1d_capacity_normalized_outlier        | 延續基於經度分組的架構，並在輸入變數追加裝置容量及過去 1 日的輻射      | 238.85634 |
+| xgb_groupby_lon_1d_prev1d_capacity_normalized_outlier_hpo_v1 | 延續前個實驗，進行模型的超參數調整                                          | 241.13532 |
+| xgb_groupby_lon_1d_prev1d_capacity_normalized_outlier_hpo_v2 | 延續前個實驗，進行模型的超參數調整                                          | 242.54411 |
 
 下圖是超參數調整的過程，可以看到部分超參數有集中的趨勢，表示這些超參數對模型的影響較大，可惜這項調整最終沒有被採用。
 
